@@ -135,25 +135,51 @@ class Alpaca(object):
     ]
     
     # TODO: Implement constructor for Alpaca Model
-    def __init__(self):
-        pass
-    
+    def __init__(self, idn, name, displayName, bio, age, hobbies, contact, sex, img = ' '):
+        self.id = idn
+        self.name = name
+        self.displayName = displayName
+        self.bio = bio
+        self.age = age
+        self.hobbies = hobbies
+        self.contact = contact
+        self.sex = sex
+        self.img = img
     # TODO: Implement get filename
     # WHAT: Method that returns the filename using the name of the alpaca
     # RETURN: The path to the image file
     def get_filename(self):
-        pass
+        imgpath = "assets/%s.png" % (self.name)
+        return imgpath
 
     # TODO: Implement get
     # WHAT: Gets the alpaca that matches the name
     # CONDITIONS: If alpaca does not match then returns nothing
     # RETURN: Must return Alpaca Model type (convert to Alpaca object)
-    def get():
-        pass
+    def get(name, data=data):
+        for i in range(0, len(data)):
+            if data[i]['name'] == name:
+                return Alpaca(data[i]['id'], data[i]['name'], data[i]['displayName'], data[i]['bio'], data[i]['age'], data[i]['hobbies'], data[i]['contact'], data[i]['sex'])
+        return " "
 
     # TODO: Implement get all
     # WHAT: Gets all the alpacas that match the sex (male, female)
     # CONDITIONS: If sex is not specified then returns all of them!
     # RETURN: Must return Alpaca Model types (convert to Alpaca objects)
-    def get_all():
-        pass
+    def get_all(sex = 'none', data=data):
+        allpaca = []
+        if sex == 'male':
+            for i in range(0,len(data)):
+                if data[i]['sex'] == 'male':
+                    alpaca = Alpaca(data[i]['id'], data[i]['name'], data[i]['displayName'], data[i]['bio'], data[i]['age'], data[i]['hobbies'], data[i]['contact'], data[i]['sex'])
+                    allpaca.append(alpaca)
+        elif sex == 'female':
+            for i in range(0,len(data)):
+                if data[i]['sex'] == 'female':
+                    alpaca = Alpaca(data[i]['id'], data[i]['name'], data[i]['displayName'], data[i]['bio'], data[i]['age'], data[i]['hobbies'], data[i]['contact'], data[i]['sex'])
+                    allpaca.append(alpaca)
+        elif sex == 'none':
+            for i in range(0,len(data)):
+                alpaca = Alpaca(data[i]['id'], data[i]['name'], data[i]['displayName'], data[i]['bio'], data[i]['age'], data[i]['hobbies'], data[i]['contact'], data[i]['sex'])
+                allpaca.append(alpaca)
+        return allpaca

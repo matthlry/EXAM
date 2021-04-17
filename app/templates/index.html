@@ -10,5 +10,19 @@
     </style>
     <body>
         Index Page
+        {% for p in allp: %}
+        <p>{{p.displayName}}</p>
+        <p>{{p.age}}</p>
+        <p>{{p.sex}}</p>
+        <a href = '/profile/{{ p.name }}'>Visit Profile</a><br>
+        <img class="img-thumbnail" src="{{url_for('static', filename=p.img)}}" alt="product"
+        style="width:95%; height: auto; max-width:540px;margin-top:40px;">
+        {% endfor %}
+        <form method="post" action="{{url_for('index', age = 25)}}">
+        <input id="update-btn" type="submit" name="over" value="Over 25">
+        </form>
+        <form method="post" action="{{url_for('index', age = 24)}}">
+        <input id="update-btn" type="submit" name="under" value="Under 25">
+        </form>
     </body>
 </html>

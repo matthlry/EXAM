@@ -6,12 +6,12 @@ from app import app
 from app.controller.alpaca_controller import alpaca_controller
 
 @app.route('/')
-def index():
-    return alpaca_controller.index()
+def index(age = 0):
+    return alpaca_controller.index(age)
 
 # TODO: implement profile for each user
-@app.route('/profile')
-def profile():
-    return alpaca_controller.profile()
+@app.route('/profile/<name>')
+def profile(name):
+    return alpaca_controller.profile(name)
 
 # TODO: implement api

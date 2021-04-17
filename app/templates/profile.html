@@ -4,11 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="{{url_for('static', filename='scripts/profile.js')}}"></script>
-        <title>Alpaca Dating</title>
+        <title>Alpaca Dating | {{profpac.name}}</title>
     </head>
     <style>
     </style>
     <body>
         Profile Page
+        <p>{{profpac.displayName}}</p>
+        <p>{{profpac.name}}</p>
+        <p>{{profpac.age}}</p>
+        <p>{{profpac.sex}}</p>
+        <p>{{profpac.contact['email']}}</p>
+        <img class="img-thumbnail" src="{{url_for('static', filename=profpac.img)}}" alt="product"
+        style="width:95%; height: auto; max-width:540px;margin-top:40px;">
+        <p>About Me:</p>
+        <p>{{profpac.bio}}</p>
+        <p>Hobbies:</p>
+        {% for i in profpac.hobbies %}
+        <p>{{i}}</p>
+        {% endfor %}
+        <br> <a href = "{{ url_for('index') }}">Back to Home</a>
     </body>
 </html>
